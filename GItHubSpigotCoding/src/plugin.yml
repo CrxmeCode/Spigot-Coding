@@ -1,0 +1,8 @@
+name: GitHubSpigotCoding
+main: de.derkaottv.main
+version: 1.0.0
+commands:
+   vanish:
+      aliases: ["v"]
+   gamemode:
+      aliases: ["gm"]
