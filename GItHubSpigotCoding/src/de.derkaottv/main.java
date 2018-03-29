@@ -12,8 +12,8 @@ public class main extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        getServer().getPluginManager().registerEvents( new PlayerJoinListener(), this );
-        getServer().getPluginManager().registerEvents( new PlayerQuitListener(), this );
+        getServer().getPluginManager().registerEvents( new PlayerJoinListener(this), this );
+        getServer().getPluginManager().registerEvents( new PlayerQuitListener(this), this );
         getServer().getPluginManager().registerEvents( new PlayerMoveListener(), this );
         getServer().getPluginManager().registerEvents( new SignChangeListener(), this );
         getServer().getPluginManager().registerEvents( new PlayerInteractListener(), this );
