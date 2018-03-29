@@ -12,30 +12,34 @@ public class VanishCommand implements CommandExecutor {
 
     public ArrayList<String> command_arraylist = new ArrayList<String>();
 
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player p = (Player) sender;
 
-        if( p.isOp() ) {
+        if( sender.isOp() ) {
+            if( sender instanceof Player ) {
 
-            if( command_arraylist.contains( p.getName() ) ) {
-                for( Player all : Bukkit.getOnlinePlayers() ) {
-                    all.showPlayer( p );
+                if( command_arraylist.contains( sender.getName() ) ) {
+                    for( Player all : Bukkit.getOnlinePlayers() ) {
+                        all.showPlayer( (Player) sender );
+                    }
+
+                    sender.sendMessage( "§cYou're not longer in the vanish now." );
+                    command_arraylist.remove( sender.getName() );
+                } else {
+
+                    for( Player all : Bukkit.getOnlinePlayers() ) {
+                        all.hidePlayer( (Player) sender );
+                    }
+
+                    sender.sendMessage( "§aYou're in the vanish now." );
+                    command_arraylist.add( sender.getName() );
                 }
-
-                p.sendMessage( "§aYou're not longer in the vanish now." );
-                command_arraylist.remove( p.getName() );
             } else {
-
-                for( Player all : Bukkit.getOnlinePlayers() ) {
-                    all.hidePlayer( p );
-                }
-
-                p.sendMessage( "§aYou're in the vanish now." );
-                command_arraylist.add( p.getName() );
+                sender.sendMessage( "§cYou're must be a player!" );
             }
-        } else {
-            p.sendMessage( "§cYou're not allowed to do that!" );
-        }
+            } else {
+                sender.sendMessage( "§cYou're not allowed to do that!" );
+            }
         return false;
     }
 }
