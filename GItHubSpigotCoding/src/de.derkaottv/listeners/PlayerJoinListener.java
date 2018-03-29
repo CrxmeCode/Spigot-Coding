@@ -12,6 +12,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         String name = p.getName();
+        
+        getItems.getMainItems( p );
 
         if( p.isOp() ) {
 
