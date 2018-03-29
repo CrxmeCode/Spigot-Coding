@@ -1,5 +1,6 @@
 package de.derkaottv;
 
+import de.derkaottv.commands.GameModeCommand;
 import de.derkaottv.commands.VanishCommand;
 import de.derkaottv.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +20,7 @@ public class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents( new PlayerInteractListener(), this );
 
         getCommand( "vanish" ).setExecutor( new VanishCommand() );
+        getCommand( "gamemode" ).setExecutor( new GameModeCommand() );
 
         getLogger().info( enabled );
     }
