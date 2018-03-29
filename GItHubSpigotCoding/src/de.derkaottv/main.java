@@ -1,9 +1,7 @@
 package de.derkaottv;
 
 import de.derkaottv.commands.VanishCommand;
-import de.derkaottv.listeners.PlayerJoinListener;
-import de.derkaottv.listeners.PlayerMoveListener;
-import de.derkaottv.listeners.PlayerQuitListener;
+import de.derkaottv.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class main extends JavaPlugin {
@@ -17,6 +15,8 @@ public class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents( new PlayerJoinListener(), this );
         getServer().getPluginManager().registerEvents( new PlayerQuitListener(), this );
         getServer().getPluginManager().registerEvents( new PlayerMoveListener(), this );
+        getServer().getPluginManager().registerEvents( new SignChangeListener(), this );
+        getServer().getPluginManager().registerEvents( new PlayerInteractListener(), this );
 
         getCommand( "vanish" ).setExecutor( new VanishCommand() );
 
