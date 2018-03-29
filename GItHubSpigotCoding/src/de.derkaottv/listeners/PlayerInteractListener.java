@@ -14,12 +14,14 @@ public class PlayerInteractListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
-        if( p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase( "§7>> §eStuff" ) ) {
+        if( e.getAction == Action.RIGHT_CLICK_BLOCK || e.getAction == Action.RIGHT_CLICK_AIR ) {
+            if( p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase( "§7>> §eStuff" ) ) {
 
-            Vector v = p.getLocation().getDirection().multiply(3D).setY(1D);
-            p.setVelocity(v);
-            p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 3);
-            p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 3, 2);
+                Vector v = p.getLocation().getDirection().multiply(3D).setY(1D);
+                p.setVelocity(v);
+                p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 3);
+                p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 3, 2);
+            }
         }
     }
 }
