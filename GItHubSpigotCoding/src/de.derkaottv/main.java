@@ -1,6 +1,7 @@
 package de.derkaottv;
 
 import de.derkaottv.commands.GameModeCommand;
+import de.derkaottv.commands.TeleportCommand;
 import de.derkaottv.commands.VanishCommand;
 import de.derkaottv.listeners.*;
 import org.bukkit.Bukkit;
@@ -19,9 +20,11 @@ public class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents( new PlayerMoveListener(), this );
         getServer().getPluginManager().registerEvents( new SignChangeListener(), this );
         getServer().getPluginManager().registerEvents( new PlayerInteractListener(), this );
+        getServer().getPluginManager().registerEvents( new PlayerRespawnListener(), this );
 
         getCommand( "vanish" ).setExecutor( new VanishCommand() );
         getCommand( "gamemode" ).setExecutor( new GameModeCommand() );
+        getCommand( "teleport" ).setExecutor( new TeleportCommand() );
 
         Bukkit.getConsoleSender().sendMessage( enabled );
     }
