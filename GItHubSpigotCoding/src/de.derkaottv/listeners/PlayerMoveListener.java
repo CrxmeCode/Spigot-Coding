@@ -1,5 +1,6 @@
 package de.derkaottv.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,6 @@ public class PlayerMoveListener implements Listener {
 
         // Lol just for fun
 
-        p.getServer().getLogger().info( "§e[INFO] The player " + name + " has moved." );
+        Bukkit.getConsoleSender().sendMessage( "§e[INFO] The player " + name + " has moved." );
     }
 }
